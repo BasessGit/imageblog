@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!--组件扫描-->
+    <context:component-scan base-package="cn.wuaijing.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+   <!-- 注解扫描-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+           <!-- 避免使用ie执行ajax返回json下载文件-->
+            <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                       <!-- 防止返回json乱码-->
+                        <value>application/json;charset=utf-8</value>
+                        <value>text/html;charset=utf-8</value>
+                        <value>application/xml;charset=utf-8</value>
+                    </list>
+                </property>
+                <property name="fastJsonConfig" ref="fastJsonConfig"></property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!--不能处理的请求交给tomcat-->
+    <mvc:default-servlet-handler />
+   <!-- 静态资源映射-->
+    <mvc:resources location="/" mapping="/js/**"/>
+    <!--配置拦截器,拦截登录验证-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/login/**"/>
+            <bean class="cn.wuaijing.utils.LoginInterceptor"></bean>
+        </mvc:interceptor>
+   </mvc:interceptors>
+    <!--配置拦截器,拦截请求验证是否登录-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+        <property name="prefix" value="/WEB-INF/html/"></property>
+        <property name="suffix" value=".html"></property>
+        <property name="contentType" value="text/html"></property>
+    </bean>
+    <!--fastjson自定义消息转化-->
+    <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
+        <property name="charset" value="utf-8"></property>
+        <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"></property>
+        <property name="serializerFeatures" >
+            <list>
+                <!--list字段如果为null,则不显示null,显示为空-->
+                <value>WriteNullListAsEmpty</value>
+            </list>
+        </property>
+    </bean>
+    <!--自定义文件上传解析-->
+    <bean id="commonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         <!--默认编码-->
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!--限制上传大小-->
+        <property name="maxUploadSize" value="31457280"/>
+        <!--默认上传时写入内存最大值-->
+        <property name="maxInMemorySize" value="40960"></property>
+         <!--   上传文件的临时路径-->
+        <property name="uploadTempDir" value="fileUpload/temp"></property>
+        <!--延时文件解析-->
+        <property name="resolveLazily" value="true"></property>
+    </bean>
+
+</beans>

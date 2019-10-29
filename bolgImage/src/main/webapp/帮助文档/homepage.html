@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html dir="ltr" lang="en-US" class="ie6"> <![endif]-->
+<!--[if IE 7]>    <html dir="ltr" lang="en-US" class="ie7"> <![endif]-->
+<!--[if IE 8]>    <html dir="ltr" lang="en-US" class="ie8"> <![endif]-->
+<!--[if gt IE 8]><!--> <html dir="ltr" lang="en-US"> <!--<![endif]-->
+
+<!-- BEGIN head -->
+
+
+<head>
+		
+	<!-- Title -->
+	<title>Dope - Theme Documentation</title>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="style.css" type="text/css"  media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.html" type="image/x-icon" />
+
+<!-- END head -->
+</head>
+
+<!-- BEGIN body -->
+<body>
+	
+	<!-- BEGIN #header -->
+	<div id="header">
+		<h1 id="title">Dope <span>Documentation</span></h1>
+		<p id="tagline">By webRedox - <a href="http://www.bootstrapmb.com/" target="_blank">www.bootstrapmb.com</a></p>
+	<!-- END #header -->
+	</div>
+	
+	<!-- BEGIN #content-inner -->
+	<div id="content-inner">
+		<div class="clearfix">
+			
+			<!-- BEGIN .one-third -->
+			<div class="one-third">
+				<h3 id="theme-setup">Home Page</h3>
+			<!-- END .one-third -->
+			</div>
+			
+			<!-- BEGIN .two-thirds -->
+			<div class="two-thirds last">
+				<ol class="contents">
+					<li><a href="index.html">Back to Menu</a></li>
+					
+				</ol>
+			<!-- END .two-thirds -->
+			</div>
+			<hr class="space1" />
+		<!-- END .clearfix -->
+		</div>
+		
+		<h2 class="title1">Home Pages Customization<span class="title-block"></span></h2>
+		<hr class="space2" />
+		<p><span>In this section we will explain how to customize home pages</span></p>
+		<h3 class="title2">CUSTOMIZING HOME PAGE DEFAULT</h3>
+		<p>So first, we need to define which css files and js files are needed for home page to work like on preview. Let's start with default home page.</p>
+		<div class="color-box">
+		<p><span>JavaScript files</span></p>
+		
+		<ol>
+			<li>assets/js/jquery-1.11.3.min.js</li>
+			<li>assets/js/bootstrap.min.js</li>
+			<li>assets/js/slider/jquery.themepunch.tools.min.js</li>
+			<li>assets/js/slider/jquery.themepunch.revolution.min.js</li>
+			<li>assets/js/slider/custom-revolution.js</li>
+			<li>assets/js/owl.carousel.min.js</li>
+			<li>assets/js/modernizr.custom.js</li>
+			<li>assets/js/classie.js</li>
+			<li>assets/js/jquery.easypiechart.min.js</li>
+			<li>assets/js/jquery.liquid-slider.js</li>
+			<li>assets/js/jquery.backstretch.min.js</li>
+			<li>assets/js/search-script.js</li>
+			<li>assets/js/click-icon-home.js</li>
+			<li>assets/js/menu/nav-sticky-custom.js</li>
+			<li>assets/js/main.js</li>
+		</ol>
+		<hr class="space1" />
+		<p><span>CSS files</span></p>
+		
+		<ol>
+			<li>assets/css/main-style.css</li>
+		</ol>
+		</div>
+		
+		
+		<hr class="space2" />
+		<p><span>Customizing Default home page</span></p>
+		<h3>SLIDER CUSTOMIZATION</h3>
+		</br>
+		<p>As already mentioned this theme comes with Revolution slider. It is pretty easy to use and we included it's original documentation. So to accomplish the same look, or similar here is how it works.</br></br>First of all keep it's main structure the same. That is:</p>
+		
+		<pre>&#60;div class="main-slider"&#62;
+	&#60;div class="tp-banner-container"&#62;
+		&#60;div class="tp-banner"&#62;
+			
+			&#60;ul&#62;
+			
+			&#60;/ul&#62;
+		
+		&#60;/div&#62;
+	&#60;/div&#62;
+&#60;/div&#62;</pre>
+</br>
+<p>Inside the ul is the place to define your slides. Every slide is one list item. First to do is to place the image that will be on the slide background inside that "li". All images that slider uses can be placed in any folder (slides). Arrow, buttons and other items must be placed inside "rs-plugin" folder. All styling for revolution slider is placed in "rs-plugin/css/revolution.css" folder. So if you want to customize anything that's the place to do that.
+
+To position the item inside the slide (image, title,...), you must put "x" & "y" coordinates where you want it to be. Also you can use class to define the animation. For example "lfl" means "long-from-left". You can see more about it in Revolution slider documentation.
+
+For revolution slider to work, you must also include some js code at the bottom of the page. You can just go to the index.html file and simply copy-paste it.</p>
+		<hr class="space1" />
+	<h3>PAGE CONTENT WRAPPERS</h3>	
+		
+		<p>So, page content, that means everything below the slider and above the footer is placed inside container div's. On first home page there are several div's with id "content". Open index.html file for easier understanding. HTML structure looks like this:</p>
+		</br>
+		<pre>
+	&#60;div class="container"&#62;
+		&#60;div id="content"&#62;
+			&#60;div class="row"&#62;
+				&#60;div class="col-sm-12"&#62;
+				
+				&#60;/div&#62;
+			&#60;/div&#62;
+		&#60;/div&#62;
+	&#60;/div&#62;
+		</pre>
+		
+		<hr class="space2" />
+		
+		
+		
+	<!-- END #content-inner -->
+	</div>
+	
+<!-- END body -->
+</body>
+
+
+</html>
